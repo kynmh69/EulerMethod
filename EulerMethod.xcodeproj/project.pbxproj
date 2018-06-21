@@ -24,7 +24,7 @@
 
 /* Begin PBXFileReference section */
 		F599C76020DB39F0009C6EFB /* EulerMethod */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EulerMethod; sourceTree = BUILT_PRODUCTS_DIR; };
-		F599C76320DB39F0009C6EFB /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		F599C76320DB39F0009C6EFB /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = main.c; path = EulerMethod/main.c; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
