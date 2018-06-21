@@ -19,6 +19,7 @@ void runge_kutta_method(double x0, double y0, double xx, int num);
 int main(int argc, const char * argv[]) {
     printf("### Euler method\n");
     euler(1.0, 1.0, 2.0, 10);
+    adjustment_euler1(1.0, 1.0, 2.0, 10);
     return 0;
 }
 
@@ -40,13 +41,14 @@ void euler(double x0, double y0, double xx, int num) {
 
 void adjustment_euler1(double x0, double y0, double xx, int num) {
     int i;
-    double k1, k2;
+    double k1 = 0.0, k2 = 0.0;
     double h = (xx - x0) / (double)num;
     printf("i   x       y        true      error\n");
     printf("-----------------------------------------------\n");
     for (i = 0; i < num; i++) {
-        y0 += h * func(x0, y0);
-        x0 += h;
-        printf("%2d %4.1lf %9.6lf %9.6lf %9.6lf\n", i+1, x0, y0, sqrt(x0), fabs(y0 - sqrt(x0)));
+        k1 += h * func(x0, y0);
+        k2 += h * func(y0+h, x0+k1);
+        x0 += 1/2 * (k1 + k2);
+        printf("%2d %4.1lf %9.6lf %9.6lf %9.6lf\n", i+1, k1, k2, sqrt(k1), fabs(k2 - sqrt(x0)));
     }
 }
