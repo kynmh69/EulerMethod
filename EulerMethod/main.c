@@ -12,6 +12,9 @@
 
 void euler(double, double, double, int);
 double func(double, double);
+void adjustment_euler1(double x0, double y0, double xx, int num);
+void adjustment_euler2(double x0, double y0, double xx, int num);
+void runge_kutta_method(double x0, double y0, double xx, int num);
 
 int main(int argc, const char * argv[]) {
     printf("### Euler method\n");
@@ -25,6 +28,19 @@ double func(double x, double y) {
 
 void euler(double x0, double y0, double xx, int num) {
     int i;
+    double h = (xx - x0) / (double)num;
+    printf("i   x       y        true      error\n");
+    printf("-----------------------------------------------\n");
+    for (i = 0; i < num; i++) {
+        y0 += h * func(x0, y0);
+        x0 += h;
+        printf("%2d %4.1lf %9.6lf %9.6lf %9.6lf\n", i+1, x0, y0, sqrt(x0), fabs(y0 - sqrt(x0)));
+    }
+}
+
+void adjustment_euler1(double x0, double y0, double xx, int num) {
+    int i;
+    double k1, k2;
     double h = (xx - x0) / (double)num;
     printf("i   x       y        true      error\n");
     printf("-----------------------------------------------\n");
